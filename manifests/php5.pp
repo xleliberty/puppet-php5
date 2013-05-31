@@ -14,10 +14,22 @@ class php5::php5 {
         require => Package["php5-cli"],
     }
 
+    file { "php-xdebug.ini":
+        path => "/etc/php5/conf.d/20-xdebug.ini",
+        ensure => file,
+        content => template("php5/php-xdebug.ini"),
+        require => Package["php5-cli"]
+    }
+
     file { "php-timezone.ini":
-        path => "/etc/php5/cli/conf.d/30-timezone.ini",
+        path => "/etc/php5/conf.d/30-timezone.ini",
         ensure => file,
         content => template("php5/php-timezone.ini"),
         require => Package["php5-cli"]
+    }
+
+    $sysPackages = ["build-essential", "curl"]
+    package { $sysPackages :
+        ensure => "latest",
     }
 }
