@@ -28,7 +28,7 @@ class php5::php5 {
         require => Package["php5-cli"]
     }
 
-    $sysPackages = ["build-essential", "curl"]
+    $sysPackages = ["curl"]
     package { $sysPackages :
         ensure => "latest",
     }
