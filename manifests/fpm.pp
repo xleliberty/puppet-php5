@@ -1,6 +1,6 @@
 class php5::fpm($php_packages){
 
-    $fpm_init_name = 'php-fpm'
+    $fpm_init_name = 'php5-fpm'
 
     package { 'php5-fpm' :
         ensure => latest,
