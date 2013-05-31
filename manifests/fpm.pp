@@ -24,20 +24,9 @@ class php5::fpm($php_packages){
       require => Package['php5-fpm']
     }
 
-  # install base PHP
-  $basePHP = [
-    'php5-cli',
-    'php-pear',
-    "php5-common",
-    "php5-dev"
-  ]
-  package { $basePHP :
-      ensure => latest,
-  }
-
   # install all required packages
   package {
-    $php_packages:
+    $php_packages :
       ensure => latest,
       notify => Service["php5-fpm"],
   }
