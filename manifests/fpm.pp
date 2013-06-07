@@ -62,7 +62,7 @@ define php5::fpmconfig (
         $php_devmode         = false,
         $fpm_user            = 'www-data',
         $fpm_group            = 'www-data',
-        $fpm_listen          = '127.0.0.1:9002',
+        $fpm_listen          = '/var/run/php-fpm/php-fpm.sock',
         $fpm_allowed_clients = '127.0.0.1'
   ){
   # set config file for the pool
