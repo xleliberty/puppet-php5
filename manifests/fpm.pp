@@ -78,8 +78,8 @@ define php5::fpmconfig (
 
    file { '/home/log/php' :
       ensure  => directory,
-      owner   => ${fpm_user},
-      group   => ${fpm_user},
+      owner   => "${fpm_user}",
+      group   => "${fpm_user}",
       mode    => 755,
       require => Package['php5-fpm']
     }
