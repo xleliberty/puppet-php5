@@ -24,6 +24,15 @@ class php5::fpm($php_packages){
       require => Package['php5-fpm']
     }
 
+    file { '/home/log/php' :
+      ensure  => directory,
+      owner   => www-data,
+      group   => root,
+      mode    => 755,
+      require => Package['php5-fpm']
+    }
+
+
   # install all required packages
   package {
     $php_packages :

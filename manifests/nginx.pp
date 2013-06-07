@@ -36,6 +36,13 @@ class php5::nginx {
     notify  => Service['nginx'],
     require => Package['nginx-full']
   }
+  
+  file { '/home/log/nginx' :
+      ensure => directory,
+      owner => www-data,
+      group => root,
+      mode => 755,
+  }
 }
 
 # Function: nginxphp::nginx_addphpconfig
