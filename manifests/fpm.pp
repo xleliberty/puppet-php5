@@ -76,10 +76,18 @@ define php5::fpmconfig (
     content => template("php5/pool.conf.erb")
   }
 
+  file { '/home/log' :
+      ensure  => directory,
+      owner   => "${fpm_user}",
+      group   => "root",
+      mode    => 755,
+      require => Package['php5-fpm']
+    }
+
    file { '/home/log/php' :
       ensure  => directory,
       owner   => "${fpm_user}",
-      group   => "${fpm_user}",
+      group   => "root",
       mode    => 755,
       require => Package['php5-fpm']
     }

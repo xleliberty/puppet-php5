@@ -37,11 +37,18 @@ class php5::nginx {
     require => Package['nginx-full']
   }
 
+  file { '/home/log' :
+      ensure => directory,
+      owner => www-data,
+      group => root,
+      mode => 755
+  }
+
   file { '/home/log/nginx' :
       ensure => directory,
       owner => www-data,
       group => root,
-      mode => 755,
+      mode => 755
   }
 }
 
