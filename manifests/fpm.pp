@@ -24,14 +24,6 @@ class php5::fpm($php_packages){
       require => Package['php5-fpm']
     }
 
-    file { '/home/log/php' :
-      ensure  => directory,
-      owner   => www-data,
-      group   => root,
-      mode    => 755,
-      require => Package['php5-fpm']
-    }
-
 
   # install all required packages
   package {
@@ -83,4 +75,13 @@ define php5::fpmconfig (
     require => Package['php5-fpm'],
     content => template("php5/pool.conf.erb")
   }
+
+   file { '/home/log/php' :
+      ensure  => directory,
+      owner   => ${fpm_user},
+      group   => ${fpm_user},
+      mode    => 755,
+      require => Package['php5-fpm']
+    }
+
 }

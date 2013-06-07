@@ -36,7 +36,7 @@ class php5::nginx {
     notify  => Service['nginx'],
     require => Package['nginx-full']
   }
-  
+
   file { '/home/log/nginx' :
       ensure => directory,
       owner => www-data,
@@ -74,9 +74,9 @@ class php5::nginx {
 #
 define php5::nginx_addphpconfig (
   $website_host       = "eliberty.dev.local",
-  $website_root       = "/var/www/",
+  $website_root       = "/vagrant/web/",
   $default_controller = "app_dev.php",
-  $php_pool_addr      = "127.0.0.1:9002",
+  $php_pool_addr      = "/var/run/php-fpm/php-fpm.sock",
   $config_template    = "php5/nginx.php.conf.erb") {
   file { "nginx-conf-${name}":
     path    => "/etc/nginx/sites-available/${name}.conf",

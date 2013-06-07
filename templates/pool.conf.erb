@@ -4,7 +4,7 @@
 user = <%= @fpm_user %>
 group = <%= @fpm_group %>
 
-listen = /var/run/php-fpm/php-fpm.sock
+listen = <%= @ $php_pool_addr %>
 
 listen.owner = <%= @fpm_user %>
 listen.group = <%= @fpm_user %>
