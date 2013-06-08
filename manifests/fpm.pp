@@ -65,8 +65,18 @@ define php5::fpmconfig (
         $fpm_listen          = '/var/run/php-fpm/php-fpm.sock',
         $fpm_allowed_clients = '127.0.0.1'
   ){
+
+  file { '/var/run/php-fpm' :
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'root',
+    mode    => 755,
+    notify  => Service['php5-fpm'],
+    require => Package['php5-fpm']
+  }
+
   # set config file for the pool
-  file {"fpm-pool-${name}":
+  file { "fpm-pool-${name}" :
     path => "/etc/php5/fpm/pool.d/${name}.conf",
     owner   => 'root',
     group   => 'root',
